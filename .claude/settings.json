@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($env:PYTHONIOENCODING = 'utf-8'; & \"C:\\\\Users\\\\22397\\\\.conda\\\\envs\\\\llmrec\\\\python.exe\" \"d:\\\\research\\\\Experiment\\\\llmrec-challenge\\\\02_load_qwen.py\")",
+      "PowerShell($env:PYTHONIOENCODING = 'utf-8'; & \"C:\\\\Users\\\\22397\\\\.conda\\\\envs\\\\llmrec\\\\python.exe\" \"d:\\\\research\\\\Experiment\\\\llmrec-challenge\\\\03_lora_sft.py\")",
+      "PowerShell($env:PYTHONIOENCODING = 'utf-8'; & \"C:\\\\Users\\\\22397\\\\.conda\\\\envs\\\\llmrec\\\\python.exe\" \"d:\\\\research\\\\Experiment\\\\llmrec-challenge\\\\03_lora_sft.py\" 2>&1)"
+    ]
+  }
+}
