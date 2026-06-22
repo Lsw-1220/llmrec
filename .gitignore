@@ -16,3 +16,10 @@ __pycache__/
 # IDE
 .vscode/
 .idea/
+
+# Claude Code 内部文件
+.conda/
+.venv/
+
+# 压缩包
+*.zip

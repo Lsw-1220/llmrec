@@ -469,7 +469,7 @@ def ask_model(m, tok, question, system="你是一个推荐系统助手。"):
             pad_token_id=tok.pad_token_id,
             eos_token_id=tok.eos_token_id,
         )
-    return tok.decode(outputs[0][inputs.shape[1]:], skip_special_tokens=True)
+    return tok.decode(outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
 
 
 # 四维度测试问题

@@ -214,8 +214,10 @@ def run_part2(dataset):
         add_generation_prompt=False,
         return_tensors="pt",
     )
-    print(f"\n  Step 3: Tokenize 后 → {token_ids.shape[1]} 个 token ID")
-    print(f"    前 10 个: {token_ids[0][:10].tolist()}")
+    # transformers 5.x: apply_chat_template 返回 dict，取 input_ids
+    token_ids_tensor = token_ids["input_ids"]
+    print(f"\n  Step 3: Tokenize 后 → {token_ids_tensor.shape[1]} 个 token ID")
+    print(f"    前 10 个: {token_ids_tensor[0][:10].tolist()}")
 
     # 💡 关键：label 遮蔽
     print(f"\n{'─'*50}")
@@ -243,7 +245,7 @@ def run_part2(dataset):
             add_generation_prompt=False, return_tensors="pt",
         )
         task = f"{d['category']}/{d['task']}"
-        lengths_by_task[task] = ids.shape[1]
+        lengths_by_task[task] = ids["input_ids"].shape[1]
 
     # 按长度排序显示
     for task, length in sorted(lengths_by_task.items(), key=lambda x: -x[1]):
@@ -465,7 +467,7 @@ def run_part6(model, tokenizer):
                 pad_token_id=tok.pad_token_id,
                 eos_token_id=tok.eos_token_id,
             )
-        return tok.decode(outputs[0][inputs.shape[1]:], skip_special_tokens=True)
+        return tok.decode(outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True)
 
     # 四维度测试
     test_questions = [
